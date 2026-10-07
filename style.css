@@ -1,0 +1,219 @@
+:root {
+  --bg: #07090d;
+  --panel: #101722;
+  --line: #27344a;
+  --yellow: #ffc20e;
+  --white: #ffffff;
+  --muted: #a9b3c4;
+  --green: #1fa83c;
+  --green-dark: #168a2e;
+  --err: #ff7b7b;
+  color-scheme: dark;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 18px;
+  background: var(--bg);
+  color: var(--white);
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+  line-height: 1.5;
+}
+main {
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+.badge {
+  display: inline-block;
+  background: var(--yellow);
+  color: #0a0f18;
+  font-weight: 800;
+  font-size: 14px;
+  padding: 7px 16px;
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+h1 {
+  margin: 0;
+  font-family: "Montserrat", "Arial Black", Impact, sans-serif;
+  font-weight: 900;
+  font-size: clamp(46px, 13vw, 68px);
+  line-height: 1;
+  color: var(--yellow);
+  letter-spacing: -0.5px;
+}
+h2 {
+  margin: 14px 0 8px;
+  font-size: clamp(20px, 5.6vw, 25px);
+  font-weight: 800;
+  line-height: 1.25;
+}
+.lead {
+  margin: 0 auto 24px;
+  max-width: 380px;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 15px;
+}
+form {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 22px 18px 20px;
+  text-align: left;
+}
+.field {
+  margin-bottom: 16px;
+}
+label {
+  display: block;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 7px;
+}
+input,
+select {
+  font: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--white);
+  background: #0a0f18;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  height: 52px;
+  padding: 0 14px;
+  width: 100%;
+  outline: none;
+}
+input::placeholder {
+  color: #5d6b82;
+  font-weight: 500;
+}
+input:focus,
+.phone:focus-within {
+  border-color: var(--yellow);
+  box-shadow: 0 0 0 3px rgba(255, 194, 14, 0.2);
+}
+.phone {
+  display: flex;
+  background: #0a0f18;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.phone select {
+  width: min(56%, 230px);
+  flex: none;
+  border: 0;
+  border-right: 1.5px solid var(--line);
+  border-radius: 0;
+  background: #0a0f18;
+  padding: 0 34px 0 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  appearance: none;
+  -webkit-appearance: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #8fa1be 50%),
+    linear-gradient(135deg, #8fa1be 50%, transparent 50%);
+  background-position:
+    calc(100% - 16px) 23px,
+    calc(100% - 10px) 23px;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+.phone input {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  flex: 1;
+  min-width: 0;
+}
+.phone input:focus {
+  box-shadow: none;
+}
+.invalid input,
+.invalid .phone {
+  border-color: var(--err);
+}
+.err {
+  display: none;
+  color: var(--err);
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 6px;
+}
+.invalid .err {
+  display: block;
+}
+button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  margin-top: 6px;
+  padding: 18px 14px;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  background: var(--green);
+  color: var(--white);
+  font: inherit;
+  font-weight: 900;
+  font-size: clamp(16px, 4.6vw, 19px);
+  letter-spacing: 0.2px;
+  box-shadow: 0 8px 26px rgba(31, 168, 60, 0.38);
+  transition:
+    background 0.15s,
+    transform 0.15s;
+}
+button:hover {
+  background: var(--green-dark);
+}
+button:active {
+  transform: scale(0.985);
+}
+button:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+}
+button:disabled {
+  opacity: 0.8;
+  cursor: progress;
+}
+button svg {
+  width: 28px;
+  height: 28px;
+  flex: none;
+}
+.note {
+  margin: 14px 0 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+@media (prefers-reduced-motion: reduce) {
+  button {
+    transition: none;
+  }
+}
