@@ -70,8 +70,8 @@ function populateCountryCodes() {
   var select = document.getElementById('code');
   if (!select) return;
 
-  var regionCode = detectUserRegionCode();
-  var fallbackCode = select.value || "+234";
+  var regionCode = 'NG';
+  var fallbackCode = '+234';
 
   fetch(COUNTRY_CODES_API)
     .then(function (response) {
@@ -106,12 +106,18 @@ function populateCountryCodes() {
 
       var preferred = findPreferredOption(select, regionCode, fallbackCode);
 
-      if (preferred) preferred.selected = true;
+      if (preferred) {
+        preferred.selected = true;
+        select.value = preferred.value;
+      }
     })
     .catch(function () {
       // Keep hardcoded options as fallback when API is unavailable.
       var preferred = findPreferredOption(select, regionCode, fallbackCode);
-      if (preferred) preferred.selected = true;
+      if (preferred) {
+        preferred.selected = true;
+        select.value = preferred.value;
+      }
     });
 }
 
